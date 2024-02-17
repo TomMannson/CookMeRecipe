@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todo
+    username: admin1
+    password: pass1
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+  resources:
+    chain:
+      strategy:
+

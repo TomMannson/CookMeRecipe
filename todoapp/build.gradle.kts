@@ -23,6 +23,12 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    compileOnly {
+        extendsFrom(configurations.annotationProcessor.get())
+    }
+}
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
@@ -31,6 +37,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+    compileOnly ("org.projectlombok:lombok")
+    annotationProcessor ("org.projectlombok:lombok")
     implementation("org.liquibase:liquibase-core")
 
     liquibaseRuntime("org.liquibase:liquibase-core:3.6.2")

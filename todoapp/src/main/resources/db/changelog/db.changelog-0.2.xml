@@ -9,8 +9,8 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <include relativeToChangelogFile="true" file="db.changelog-0.1.xml" />
-    <include relativeToChangelogFile="true" file="db.changelog-0.2.xml" />
-    <include relativeToChangelogFile="true" file="db.changelog-0.3.xml" />
+        <changeSet id="2"  author="tom">
+            <dropTable tableName="todo" />
+        </changeSet>
 
 </databaseChangeLog>

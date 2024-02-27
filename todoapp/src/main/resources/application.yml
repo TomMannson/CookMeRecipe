@@ -11,8 +11,8 @@ spring:
 
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
+    drop-first: true
 
-  resources:
-    chain:
-      strategy:
-
+server:
+  servlet:
+    context-path: /api/v1

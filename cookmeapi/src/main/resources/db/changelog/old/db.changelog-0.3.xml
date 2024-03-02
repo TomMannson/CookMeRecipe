@@ -7,7 +7,7 @@
 
     <changeSet id="3" author="tom">
         <createTable tableName="draft">
-            <column name="id" type="INTEGER" autoIncrement="true">
+            <column name="id" type="INTEGER">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="recipe_name" type="VARCHAR(100)">
@@ -28,7 +28,7 @@
             </column>
         </createTable>
 
-        <createSequence sequenceName="draft_id_seq" startValue="1" incrementBy="100"/>
+        <createSequence sequenceName="draft_id_seqs" startValue="100" incrementBy="100"/>
     </changeSet>
 
 </databaseChangeLog>

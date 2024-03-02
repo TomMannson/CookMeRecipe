@@ -9,8 +9,18 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <include relativeToChangelogFile="true" file="old/db.changelog-0.1.xml" />
-    <include relativeToChangelogFile="true" file="old/db.changelog-0.2.xml" />
-    <include relativeToChangelogFile="true" file="old/db.changelog-0.3.xml" />
+        <changeSet id="1"  author="tom">
+            <createTable tableName="todo">
+                <column  name="id"  type="int" autoIncrement="true" >
+                    <constraints  primaryKey="true"  nullable="false"/>
+                </column>
+                <column  name="name"  type="varchar(50)">
+                    <constraints  nullable="false"/>
+                </column>
+                <column  name="content"  type="varchar(50)">
+                    <constraints  nullable="false"/>
+                </column>
+            </createTable>
+        </changeSet>
 
 </databaseChangeLog>

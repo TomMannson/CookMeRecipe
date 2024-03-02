@@ -9,18 +9,30 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-        <changeSet id="1"  author="tom">
-            <createTable tableName="todo">
-                <column  name="id"  type="int" autoIncrement="true" >
-                    <constraints  primaryKey="true"  nullable="false"/>
-                </column>
-                <column  name="name"  type="varchar(50)">
-                    <constraints  nullable="false"/>
-                </column>
-                <column  name="content"  type="varchar(50)">
-                    <constraints  nullable="false"/>
-                </column>
-            </createTable>
-        </changeSet>
+    <changeSet id="1" author="tom">
+        <createTable tableName="draft">
+            <column name="id" type="INTEGER">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="recipe_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="original_extracted_text" type="VARCHAR(4096)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="recipe_generated_text" type="VARCHAR(4096)"/>
+            <column name="ingredients_generated_text" type="VARCHAR(4096)"/>
+            <column name="tools_text_generated_text" type="VARCHAR(4096)"/>
+            <column name="preparation_time" type="VARCHAR(4096)"/>
+            <column name="creation_at" type="TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_modification" type="TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <createSequence sequenceName="draft_id_seqs" startValue="100" incrementBy="100"/>
+    </changeSet>
 
 </databaseChangeLog>

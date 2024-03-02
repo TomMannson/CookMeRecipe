@@ -34,8 +34,9 @@ public class DraftDbo extends AuditableDbo {
     @Id
     @SequenceGenerator(
             name = "draft_pk_generator_seq",
-            sequenceName = "draft_id_seq",
-            allocationSize = 100
+            sequenceName = "draft_id_seqs",
+            allocationSize = 100,
+            initialValue = 100
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,

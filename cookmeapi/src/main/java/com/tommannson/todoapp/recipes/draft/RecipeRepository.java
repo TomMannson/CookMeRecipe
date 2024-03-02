@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-interface DraftRepository extends JpaRepository<DraftDbo, Long> {
+interface RecipeRepository extends JpaRepository<RecipeDbo, Long> {
 
 }

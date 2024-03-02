@@ -9,7 +9,7 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class DraftDto {
+public class RecipeDto {
 
     @NotNull
     private String name;

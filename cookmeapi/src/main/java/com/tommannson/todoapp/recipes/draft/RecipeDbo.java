@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "draft")
+@Table(name = "recipe")
 @Data
 @Getter
 @Setter
 @NoArgsConstructor
-public class DraftDbo extends AuditableDbo {
+public class RecipeDbo extends AuditableDbo {
 
     String recipeName;
     String originalExtractedText;
@@ -22,7 +22,7 @@ public class DraftDbo extends AuditableDbo {
     String toolsTextGeneratedText;
     String preparationTime;
 
-    public DraftDbo(String recipeName, String originalExtractedText, String recipeGeneratedText, String ingredientsGeneratedText, String toolsTextGeneratedText, String preparationTime) {
+    public RecipeDbo(String recipeName, String originalExtractedText, String recipeGeneratedText, String ingredientsGeneratedText, String toolsTextGeneratedText, String preparationTime) {
         this.recipeName = recipeName;
         this.originalExtractedText = originalExtractedText;
         this.recipeGeneratedText = recipeGeneratedText;

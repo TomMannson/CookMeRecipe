@@ -10,41 +10,41 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
-@RequestMapping("/draft2")
+@RequestMapping("/repices")
 @RestController
-public class DraftController {
+public class RecipeController {
 
-    private final DraftRepository recipeDraftRepo;
+    private final RecipeRepository recipeReposotory;
 
-    public DraftController(DraftRepository recipeDraftRepo) {
-        this.recipeDraftRepo = recipeDraftRepo;
+    public RecipeController(RecipeRepository recipeDraftRepo) {
+        this.recipeReposotory = recipeDraftRepo;
     }
 
     @GetMapping
-    ResponseEntity<Page<DraftDto>> getAll(Pageable pageable) {
+    ResponseEntity<Page<RecipeDto>> getAll(Pageable pageable) {
         return ResponseEntity.ok(
-                recipeDraftRepo.findAll(pageable)
+                recipeReposotory.findAll(pageable)
                         .map(this::convertToDto)
         );
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<DraftDto> getById(
+    ResponseEntity<RecipeDto> getById(
             @PathVariable("id")
             @Pattern(regexp = "\\d{9}", message = "Id should be number")
             String draftId
     ) {
         return ResponseEntity.of(
-                recipeDraftRepo.findById(Long.getLong(draftId))
+                recipeReposotory.findById(Long.getLong(draftId))
                         .map(this::convertToDto)
         );
     }
 
     @PostMapping
     ResponseEntity<Void> createDraft(
-            @Valid @RequestBody DraftDto data
+            @Valid @RequestBody RecipeDto data
     ) {
-        var dbObject = new DraftDbo(
+        var dbObject = new RecipeDbo(
                 data.getName(),
                 data.getOriginalExtractedText(),
                 data.getRecipeText(),
@@ -53,16 +53,16 @@ public class DraftController {
                 data.getPreparationTime()
         );
 
-        recipeDraftRepo.save(dbObject);
+        recipeReposotory.save(dbObject);
         return ResponseEntity.created(URI.create("" + dbObject.getId())).build();
     }
 
     @PutMapping("/{id}")
     ResponseEntity<Void> updateDraft(
             @PathVariable("id") @NotBlank String draftId,
-            @Valid @RequestBody DraftDto newData
+            @Valid @RequestBody RecipeDto newData
     ) {
-        var dto = recipeDraftRepo.findById(Long.parseLong(draftId))
+        var dto = recipeReposotory.findById(Long.parseLong(draftId))
                 .get();
 
 
@@ -73,7 +73,7 @@ public class DraftController {
         dto.setToolsTextGeneratedText(newData.getToolsInfo());
         dto.setPreparationTime(newData.getPreparationTime());
 
-        recipeDraftRepo.save(dto);
+        recipeReposotory.save(dto);
         return ResponseEntity.accepted().build();
     }
 
@@ -81,12 +81,12 @@ public class DraftController {
     ResponseEntity<Void> updateDraft(
             @PathVariable("id") @NotBlank String draftId
     ) {
-        recipeDraftRepo.deleteById(Long.parseLong(draftId));
+        recipeReposotory.deleteById(Long.parseLong(draftId));
         return ResponseEntity.noContent().build();
     }
 
-    private DraftDto convertToDto(DraftDbo dbObject) {
-        DraftDto dto = new DraftDto();
+    private RecipeDto convertToDto(RecipeDbo dbObject) {
+        RecipeDto dto = new RecipeDto();
         dto.setId(dbObject.getId().toString());
         dto.setName(dbObject.getRecipeName());
         dto.setOriginalExtractedText(dbObject.getOriginalExtractedText());

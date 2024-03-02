@@ -1,4 +1,4 @@
-package com.tommannson.todoapp.recipes.draft.data;
+package com.tommannson.todoapp.recipes.draft;
 
 import com.tommannson.todoapp.recipes.configuration.audit.AuditableDbo;
 import jakarta.persistence.*;
@@ -42,5 +42,5 @@ public class DraftDbo extends AuditableDbo {
             strategy = GenerationType.SEQUENCE,
             generator = "draft_pk_generator_seq"
     )
-    Integer id;
+    Long id;
 }

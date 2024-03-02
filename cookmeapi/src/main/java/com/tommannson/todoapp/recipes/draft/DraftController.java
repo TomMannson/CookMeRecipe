@@ -1,7 +1,5 @@
 package com.tommannson.todoapp.recipes.draft;
 
-import com.tommannson.todoapp.recipes.draft.data.DraftDbo;
-import com.tommannson.todoapp.recipes.draft.data.DraftRepository;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
